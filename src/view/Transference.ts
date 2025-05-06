@@ -42,7 +42,6 @@ export default class Transference {
                         break;
                 }
              }
-             console.log(this.getCpf2())
         }
     
 

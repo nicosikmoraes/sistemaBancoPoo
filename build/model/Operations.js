@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const StatusEnum_1 = require("./StatusEnum");
 class Operations {
-    constructor(control, status) {
+    constructor(control) {
+        this.status = StatusEnum_1.StatusTransference.Failed;
         this.control = control;
-        this.status = status;
     }
     deposit(amount) {
         this.control.db.setAcessBalance(this.control.db.getAcessBalance() + amount);
@@ -19,20 +20,20 @@ class Operations {
         this.control.db.setAccount2(this.control.db.getAccount2() + amount);
     }
     statusName(name) {
-        if (name.length > 6) {
-            this.status = StatusTransference.Completed;
+        if (name.length > 5) {
+            this.status = StatusEnum_1.StatusTransference.Completed;
         }
         else {
-            this.status = StatusTransference.Processing;
+            this.status = StatusEnum_1.StatusTransference.Failed;
         }
         console.log(this.status);
     }
     statusCpf(cpf) {
         if (cpf === 11) {
-            this.status = StatusTransference.Completed;
+            this.status = StatusEnum_1.StatusTransference.Completed;
         }
         else {
-            this.status = StatusTransference.Pendent;
+            this.status = StatusEnum_1.StatusTransference.Failed;
         }
         console.log(this.status);
     }

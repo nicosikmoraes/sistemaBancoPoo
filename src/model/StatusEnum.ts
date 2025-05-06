@@ -1,5 +1,4 @@
-enum StatusTransference {
-    Pendent = "Pendent",
-    Processing = "Processing",
-    Completed = "Completed",
+export enum StatusTransference {
+    Failed = "Tranference Failed",
+    Completed = "Transference Completed",
 }

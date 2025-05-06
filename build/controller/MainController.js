@@ -5,13 +5,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Database_1 = __importDefault(require("../db/Database"));
 const Conta_1 = __importDefault(require("../model/Conta"));
+const NewBankInfo_1 = __importDefault(require("../model/NewBankInfo"));
 const Operations_1 = __importDefault(require("../model/Operations"));
 const User_1 = __importDefault(require("../model/User"));
 const MainScreen_1 = __importDefault(require("../view/MainScreen"));
 class MainController {
     constructor() {
         this.db = new Database_1.default();
+        //Injeção de Dependências.
         this.operations = new Operations_1.default(this);
+        this.bankInfo = new NewBankInfo_1.default();
         new MainScreen_1.default(this); //Estou passando um parametro que é p próprio MainCotroller para o control do MainScreen.
     }
     getNewUser() {

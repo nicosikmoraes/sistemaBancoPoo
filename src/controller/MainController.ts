@@ -1,12 +1,15 @@
 import Database from "../db/Database";
 import Conta from "../model/Conta";
+import BankInfo from "../model/NewBankInfo";
 import Operations from "../model/Operations";
 import User from "../model/User";
 import MainScreen from "../view/MainScreen";
 
 export default class MainController {
     public db: Database = new Database();
+        //Injeção de Dependências.
     public operations: Operations = new Operations(this);
+    public bankInfo: BankInfo = new BankInfo()
 
     constructor(){
         new MainScreen(this);   //Estou passando um parametro que é p próprio MainCotroller para o control do MainScreen.

@@ -1,13 +1,13 @@
 import MainController from "../controller/MainController";
+import { StatusTransference } from "./StatusEnum";
 
 
 export default class Operations {
     private control: MainController;
-    private status: StatusTransference;
+    private status: StatusTransference = StatusTransference.Failed;
 
-    public constructor(control: MainController, status: StatusTransference){
+    public constructor(control: MainController,){
         this.control = control;
-        this.status = status;
     }
 
 
@@ -30,20 +30,20 @@ export default class Operations {
     }
 
     public statusName(name: string){
-        if(name.length > 6){
+        if(name.length > 5){
             this.status = StatusTransference.Completed
         }else{
-            this.status = StatusTransference.Processing
+            this.status = StatusTransference.Failed
         }
-        console.log(this.status);
+        console.log(this.status)
     }
 
     public statusCpf(cpf: number){
         if(cpf === 11){
             this.status = StatusTransference.Completed
         }else{
-            this.status = StatusTransference.Pendent
+            this.status = StatusTransference.Failed
         }
-        console.log(this.status);
+        console.log(this.status)
     }
 }

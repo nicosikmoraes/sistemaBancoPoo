@@ -1,23 +1,20 @@
 import MainController from "../controller/MainController";
-import { OtherBank } from "../model/OtherBank";
 import TransferenceSameBank from "./TransfBank";
 
 export default class TransferenceOtherBank extends TransferenceSameBank {
-    private bankInfo: OtherBank;
     private name!: string
     private numCpf!: number
 
-    public constructor(control: MainController, bankInfo: OtherBank){
+    public constructor(control: MainController){
         super(control); 
-        this.bankInfo = bankInfo
     }
 
     //Sobrescrita
     public transferenceMoney(){
 
-        //Injeção de dependências por meio de uma Interface (OtherBank)
-       this.bankInfo.name = this.prompt("What is the name of the bank?");
-       this.bankInfo.money = this.prompt("What is the coin that you want to transfer?");
+        //Injeção de dependências por meio de uma Interface (IOtherBank)
+       this.control.bankInfo.name = this.prompt("What is the name of the bank?");
+       this.control.bankInfo.money = this.prompt("What is the coin that you want to transfer?");
 
        let cpf: string = this.prompt("if you know what is the Social Number of the account?");
        this.numCpf = Number(cpf);
@@ -28,6 +25,8 @@ export default class TransferenceOtherBank extends TransferenceSameBank {
        let nAmount: number = Number(amount);
 
         this.control.operations.withdraw(nAmount);
+        console.log(this.control.bankInfo.name);
+        console.log(this.control.bankInfo.money);
         this.checkStringNumber(this.numCpf, this.name);
     }
 

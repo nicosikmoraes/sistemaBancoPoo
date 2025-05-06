@@ -34,7 +34,6 @@ class Transference {
                     break;
             }
         }
-        console.log(this.getCpf2());
     }
 }
 exports.default = Transference;
